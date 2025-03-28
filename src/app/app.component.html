@@ -1,39 +1,58 @@
 <nz-layout class="app-layout">
-  <nz-sider class="menu-sidebar"
-    nzCollapsible
-    nzWidth="256px"
-    nzBreakpoint="md"
-    [(nzCollapsed)]="isCollapsed"
-    [nzTrigger]="null"
-  >
+  <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null">
     <div class="sidebar-logo">
-      <a href="https://ng.ant.design/" target="_blank">
+      <a target="_blank">
         <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
         <h1>Ant Design of Angular</h1>
       </a>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+      <li nz-submenu nzOpen nzTitle="導覽列" nzIcon="bars">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <nz-icon nzType="home" nzTheme="outline"/>
-            <a routerLink="/welcome">Homepage</a>
+            <nz-icon nzType="home" nzTheme="outline" />
+            <a routerLink="/welcome">首頁</a>
+          </li>
+          @if (!isAdmin && !isCustomer) {
+          <li nz-menu-item nzMatchRouter>
+            <nz-icon nzType="user" nzTheme="outline" />
+            <a routerLink="/register">註冊</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <nz-icon nzType="user" nzTheme="outline"/>
-            <a routerLink="/register">Register</a>
+            <nz-icon nzType="login" nzTheme="outline" />
+            <a routerLink="/login">登入</a>
+          </li>
+          }
+
+          @if (isAdmin) {
+          <li nz-menu-item nzMatchRouter>
+            <nz-icon nzType="apartment" nzTheme="outline" />
+            <a routerLink="/admin/rooms">房間</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <nz-icon nzType="login" nzTheme="outline"/>
-            <a routerLink="/login">Login</a>
+            <nz-icon nzType="pull-request" nzTheme="outline" />
+            <a routerLink="/admin/reservations">預約</a>
           </li>
-        </ul>
-      </li>
-      <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a>Basic Form</a>
+          <li nz-menu-item nzMatchRouter (click)="loggout()">
+            <nz-icon nzType="logout" nzTheme="outline" />
+            <a routerLink="/welcome">登出</a>
           </li>
+          }
+          @if (isCustomer){
+            <li nz-menu-item nzMatchRouter>
+              <nz-icon nzType="apartment" nzTheme="outline" />
+              <a routerLink="/customer/rooms">房間</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <nz-icon nzType="pull-request" nzTheme="outline" />
+              <a routerLink="/customer/bookings">預訂</a>
+            </li>
+          <li nz-menu-item nzMatchRouter (click)="loggout()">
+            <nz-icon nzType="logout" nzTheme="outline" />
+            <a routerLink="/welcome">登出</a>
+          </li>
+          }
         </ul>
       </li>
     </ul>

@@ -7,12 +7,12 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { AuthService } from '../../service/auth/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, NzButtonModule, NzCheckboxModule, NzFormModule, NzInputModule],
+  imports: [ReactiveFormsModule, NzButtonModule, NzCheckboxModule, NzFormModule, NzInputModule,RouterLink, ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -22,6 +22,7 @@ export class LoginComponent {
     private authservice: AuthService,
     private message: NzMessageService,
     private router: Router,
+
   ) { }
 
   private fb = inject(NonNullableFormBuilder);
@@ -42,6 +43,12 @@ export class LoginComponent {
           SessionService.saveUser(user);
           SessionService.saveToken(res.jwt);
 
+          if (SessionService.isAdmin()) {
+            this.router.navigateByUrl('/admin/dashboard')
+          }
+          if (SessionService.isCustomer()) {
+            this.router.navigateByUrl('/customer/rooms')
+          }
 
           this.message.success("您已成功登入！", { nzDuration: 5000 });
           this.router.navigateByUrl('/welcome');

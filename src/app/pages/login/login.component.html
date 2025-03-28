@@ -1,13 +1,13 @@
 <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
   <nz-form-item>
-    <nz-form-control nzErrorTip="Please input your email!">
+    <nz-form-control nzErrorTip="請輸入信箱！">
       <nz-input-group nzPrefixIcon="mail">
         <input type="text" nz-input formControlName="email" placeholder="Email" />
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-control nzErrorTip="Please input your Password!">
+    <nz-form-control nzErrorTip="請輸入密碼！">
       <nz-input-group nzPrefixIcon="lock">
         <input type="password" nz-input formControlName="password" placeholder="Password" />
       </nz-input-group>
@@ -16,14 +16,11 @@
   <div nz-row class="login-form-margin">
     <div nz-col [nzSpan]="12">
       <label nz-checkbox formControlName="remember">
-        <span>Remember me</span>
+        <span>記住我</span>
       </label>
     </div>
-    <div nz-col [nzSpan]="12">
-      <a class="login-form-forgot">Forgot password</a>
-    </div>
+
   </div>
-  <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
-  Or
-  <a>register now!</a>
+  <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">登入</button>
+  <a routerLink="/register">註冊</a>
 </form>

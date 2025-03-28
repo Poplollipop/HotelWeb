@@ -16,13 +16,16 @@
       <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/welcome">Welcome</a>
+            <nz-icon nzType="home" nzTheme="outline"/>
+            <a routerLink="/welcome">Homepage</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a>Monitor</a>
+            <nz-icon nzType="user" nzTheme="outline"/>
+            <a routerLink="/register">Register</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a>Workplace</a>
+            <nz-icon nzType="login" nzTheme="outline"/>
+            <a routerLink="/login">Login</a>
           </li>
         </ul>
       </li>

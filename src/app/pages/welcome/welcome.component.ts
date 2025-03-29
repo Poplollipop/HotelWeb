@@ -10,10 +10,15 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 
 })
 export class WelcomeComponent {
+
   constructor(private router: Router) { }
 
 
   toLogin() {
     this.router.navigateByUrl('login')
   }
+
+  toRegister() {
+    this.router.navigateByUrl('register')
+    }
 }

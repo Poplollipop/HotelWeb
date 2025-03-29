@@ -1,0 +1,30 @@
+<div class="container">
+  <form nz-form [nzLayout]="'inline'" [formGroup]="roomFrom" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-control nzErrorTip="請輸入房間名稱！">
+        <nz-input-group nzPrefixIcon="home">
+          <input formControlName="name" nz-input placeholder="房間名稱" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="請輸入房間類型！">
+        <nz-input-group>
+          <input formControlName="type" nz-input  placeholder="房間類型" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="請輸入房間價格！">
+        <nz-input-group>
+          <input formControlName="price" nz-input  placeholder="房間價格" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <button nz-button nzType="primary" [disabled]="!roomFrom.valid">確認</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>

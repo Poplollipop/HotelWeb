@@ -18,6 +18,12 @@ export class AdminService {
     })
   }
 
+  getRoom(pageNumber: number): Observable<any> {
+    return this.http.get(URL + `api/admin/rooms/${pageNumber}`, {
+      headers: this.createAuth(),
+    })
+  }
+
   createAuth(){
     let authHeader: HttpHeaders = new HttpHeaders();
     return authHeader.set(

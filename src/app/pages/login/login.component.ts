@@ -51,7 +51,6 @@ export class LoginComponent {
           }
 
           this.message.success("您已成功登入！", { nzDuration: 5000 });
-          this.router.navigateByUrl('/welcome');
           return
         }
         this.message.error(`${res.message}`, { nzDuration: 5000 })

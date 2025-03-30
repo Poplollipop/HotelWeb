@@ -1,1 +1,8 @@
-<p>dashboard works!</p>
+<div class="container">
+  <button nz-button nzType="primary" routerLink="admin/rooms">新增房間</button>
+  @for (item of rooms; track $index) {
+  <nz-card style="width:300px;" [nzActions]="[actionEdit,actionDelete]">
+
+  </nz-card>
+  }
+</div>

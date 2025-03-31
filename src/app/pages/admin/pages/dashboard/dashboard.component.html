@@ -1,8 +1,25 @@
 <div class="container">
   <button nz-button nzType="primary" routerLink="admin/rooms">新增房間</button>
-  @for (item of rooms; track $index) {
+  @for (room of rooms; track $index) {
   <nz-card style="width:300px;" [nzActions]="[actionEdit,actionDelete]">
+    <nz-skeleton [nzActive]="true" [nzLoading]="false" [nzAvatar]="{size:'large'}">
+      <nz-card-meta [nzAvatar]="avatarTemplate" nzTitle="{{room.name}}" nzDescription="類型：{{room.type}}">
 
+      </nz-card-meta>
+      <nz-card-meta nzDescription="價格：{{room.price}}"></nz-card-meta>
+    </nz-skeleton>
   </nz-card>
   }
+  <ng-template #actionEdit>
+    <button nz-button nzType="link">編輯</button>
+  </ng-template>
+
+  <ng-template #actionDelete>
+    <button nz-button nzType="link" nzDanger>刪除</button>
+  </ng-template>
+
+  <div class="pagination">
+    <nz-pagination [nzPageIndex]="current_page" [nzTotal]="total" [nzPageSize]="1"
+      (nzPageIndexChange)="pageIndexChange($event)"></nz-pagination>
+  </div>
 </div>

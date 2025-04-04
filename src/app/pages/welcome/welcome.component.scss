@@ -7,6 +7,8 @@
   padding-top: 3%;
   border-radius: 12px;
   width: 50%;
+  background: rgba(255, 255, 255, 0.8);
+
 }
 
 
@@ -22,4 +24,10 @@
   display: flex;
   margin-top: 30%;
   justify-content: space-evenly;
+}
+
+
+
+button[nz-button]:hover {
+  transform: scale(1.1);
 }

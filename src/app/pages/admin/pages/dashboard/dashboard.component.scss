@@ -1,0 +1,48 @@
+/* 容器設計，讓內容置中且間距適中 */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f4f6f9;
+  min-height: 75vh;
+}
+
+.btn{
+  width: 20%;
+  height: 10%;
+  margin-left: 90%;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+nz-card {
+  width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background: #fff;
+  margin: 15px;
+}
+
+nz-card:hover {
+  transform: translateY(-5px);
+}
+
+nz-card-meta {
+  text-align: left;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}

@@ -1,5 +1,5 @@
 <div class="container">
-  <button nz-button nzType="primary" routerLink="admin/rooms">新增房間</button>
+  <button class="btn" nz-button nzType="primary" routerLink="/admin/post-rooms">新增房間</button>
   @for (room of rooms; track $index) {
   <nz-card style="width:300px;" [nzActions]="[actionEdit,actionDelete]">
     <nz-skeleton [nzActive]="true" [nzLoading]="false" [nzAvatar]="{size:'large'}">

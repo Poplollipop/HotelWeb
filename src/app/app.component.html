@@ -10,10 +10,17 @@
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
       <li nz-submenu nzOpen nzTitle="導覽列" nzIcon="bars">
         <ul>
+          @if (isAdmin) {
+          <li nz-menu-item nzMatchRouter>
+            <nz-icon nzType="home" nzTheme="outline" />
+            <a routerLink="/admin/dashboard">首頁</a>
+          </li>
+          }@else {
           <li nz-menu-item nzMatchRouter>
             <nz-icon nzType="home" nzTheme="outline" />
             <a routerLink="/welcome">首頁</a>
           </li>
+          }
           @if (!isAdmin && !isCustomer) {
           <li nz-menu-item nzMatchRouter>
             <nz-icon nzType="user" nzTheme="outline" />
@@ -41,14 +48,14 @@
           </li>
           }
           @if (isCustomer){
-            <li nz-menu-item nzMatchRouter>
-              <nz-icon nzType="apartment" nzTheme="outline" />
-              <a routerLink="/customer/rooms">房間</a>
-            </li>
-            <li nz-menu-item nzMatchRouter>
-              <nz-icon nzType="pull-request" nzTheme="outline" />
-              <a routerLink="/customer/bookings">預訂</a>
-            </li>
+          <li nz-menu-item nzMatchRouter>
+            <nz-icon nzType="apartment" nzTheme="outline" />
+            <a routerLink="/customer/rooms">房間</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <nz-icon nzType="pull-request" nzTheme="outline" />
+            <a routerLink="/customer/bookings">預訂</a>
+          </li>
           <li nz-menu-item nzMatchRouter (click)="loggout()">
             <nz-icon nzType="logout" nzTheme="outline" />
             <a routerLink="/welcome">登出</a>

@@ -6,7 +6,7 @@ import { RouterLink } from '@angular/router';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
-
+import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 @Component({
   selector: 'app-dashboard',
   imports: [
@@ -14,6 +14,7 @@ import { NzPaginationModule } from 'ng-zorro-antd/pagination';
     NzCardModule,
     NzSkeletonModule,
     NzPaginationModule,
+    NzModalModule,
     RouterLink,
   ],
   templateUrl: './dashboard.component.html',
@@ -31,6 +32,7 @@ export class DashboardComponent {
   constructor(
     private message: NzMessageService,
     private adminService: AdminService,
+    private nzModal: NzModalService,
   ) {
     this.getRooms();
   }
@@ -40,6 +42,25 @@ export class DashboardComponent {
       console.log(res);
       this.rooms = res.roomsDtoList;
       this.total = res.pages * 1;
+    })
+  }
+
+  showConfirmed(roomId: number) {
+    this.nzModal.confirm({
+      nzTitle: '確認',
+      nzContent: '您確認要刪除嗎？刪除後無法回復！',
+      nzOkText: '刪除',
+      nzCancelText: '取消',
+      nzOnOk: () => this.deleteRoom(roomId)
+    })
+  }
+
+  deleteRoom(roomId: number) {
+    this.adminService.deleteRoom(roomId).subscribe(res => {
+      this.message.success(`房間已成功刪除！`, { nzDuration: 5000 });
+      this.getRooms();
+    }, error => {
+      this.message.error(`${error.error}`, { nzDuration: 5000 })
     })
   }
 

@@ -20,7 +20,7 @@
     </ng-template>
 
     <ng-template #actionDelete>
-      <button nz-button nzType="link" nzDanger>刪除</button>
+      <button nz-button nzType="link" nzDanger (click)="showConfirmed(room.id)">刪除</button>
     </ng-template>
     }
   </div>

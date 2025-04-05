@@ -24,8 +24,20 @@ export class AdminService {
     })
   }
 
-  getRoomById(id: number): Observable<any>{
+  getRoomById(id: number): Observable<any> {
     return this.http.get(URL + `api/admin/room/${id}`, {
+      headers: this.createAuth(),
+    })
+  }
+
+  updateRoom(id: number, roomsDto: any): Observable<any> {
+    return this.http.put(URL + `api/admin/room/${id}`, roomsDto, {
+      headers: this.createAuth(),
+    })
+  }
+
+  deleteRoom(roomId: number): Observable<any> {
+    return this.http.delete(URL + `api/admin/room/${roomId}`, {
       headers: this.createAuth(),
     })
   }

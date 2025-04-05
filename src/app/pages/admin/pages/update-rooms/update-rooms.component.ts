@@ -46,18 +46,18 @@ export class UpdateRoomsComponent {
   }
 
   submitForm() {
-    // this.adminService.postRoom(this.updateRoomFrom.value).subscribe(res => {
-    //   this.message.success(
-    //     `您已成功修改房間資訊！`,
-    //     { nzDuration: 5000 }
-    //   );
-    //   this.router.navigateByUrl('admin/dashboard')
-    // }, error => {
-    //   this.message.error(
-    //     `${error.error}`,
-    //     { nzDuration: 5000 }
-    //   )
-    // })
+    this.adminService.updateRoom(this.id, this.updateRoomFrom.value).subscribe(res => {
+      this.message.success(
+        `您已成功修改房間資訊！`,
+        { nzDuration: 5000 }
+      );
+      this.router.navigateByUrl('admin/dashboard')
+    }, error => {
+      this.message.error(
+        `${error.error}`,
+        { nzDuration: 5000 }
+      )
+    })
   }
 
 }

@@ -1,1 +1,30 @@
-<p>update-rooms works!</p>
+<div class="container">
+  <form nz-form [nzLayout]="'inline'" [formGroup]="updateRoomFrom" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-control nzErrorTip="請輸入欲更改房間名稱！">
+        <nz-input-group nzPrefixIcon="home">
+          <input formControlName="name" nz-input placeholder="房間名稱" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="請輸入欲更改房間類型！">
+        <nz-input-group nzPrefixIcon="unordered-list">
+          <input formControlName="type" nz-input placeholder="房間類型" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="請輸入欲更改房間價格！">
+        <nz-input-group nzPrefixIcon="money-collect">
+          <input formControlName="price" nz-input placeholder="房間價格" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <button nz-button nzType="primary" [disabled]="!updateRoomFrom.valid">確認更改</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>

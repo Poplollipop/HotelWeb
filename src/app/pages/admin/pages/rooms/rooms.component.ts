@@ -1,6 +1,6 @@
 import { AdminService } from './../../../../service/admin-service/admin.service';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, NonNullableFormBuilder, ReactiveFormsModule, } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -13,7 +13,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
   styleUrl: './rooms.component.scss'
 })
 export class RoomsComponent {
-  roomFrom: FormGroup;
+  roomForm: FormGroup;
 
 
   constructor(private fb: FormBuilder,
@@ -21,7 +21,7 @@ export class RoomsComponent {
     private router: Router,
     private adminService: AdminService,
   ) {
-    this.roomFrom = fb.group({
+    this.roomForm = fb.group({
       name: ['', Validators.required],
       type: ['', Validators.required],
       price: ['', Validators.required]
@@ -29,7 +29,7 @@ export class RoomsComponent {
   }
 
   submitForm() {
-    this.adminService.postRoom(this.roomFrom.value).subscribe(res => {
+    this.adminService.postRoom(this.roomForm.value).subscribe(res => {
       this.message.success(
         `您已成功新增房間資訊！`,
         { nzDuration: 5000 }

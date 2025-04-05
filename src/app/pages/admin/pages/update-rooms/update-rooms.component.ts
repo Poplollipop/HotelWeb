@@ -16,7 +16,7 @@ export class UpdateRoomsComponent {
 
   updateRoomFrom: FormGroup;
 
-  id: string
+  id: number
 
   constructor(private fb: FormBuilder,
     private message: NzMessageService,
@@ -31,8 +31,18 @@ export class UpdateRoomsComponent {
     })
   }
   ngOnInit() {
-
     this.id = this.activatedroute.snapshot.params['id'];
+    this.getRoomById();
+  }
+
+  getRoomById() {
+    this.adminService.getRoomById(this.id).subscribe(res => {
+      this.updateRoomFrom.patchValue(res);
+      console.log(res);
+
+    }, error => {
+      this.message.error(`${error.error}`, { nzDuration: 5000 })
+    })
   }
 
   submitForm() {

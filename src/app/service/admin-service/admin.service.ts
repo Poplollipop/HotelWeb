@@ -24,11 +24,17 @@ export class AdminService {
     })
   }
 
-  createAuth(){
+  getRoomById(id: number): Observable<any>{
+    return this.http.get(URL + `api/admin/room/${id}`, {
+      headers: this.createAuth(),
+    })
+  }
+
+  createAuth() {
     let authHeader: HttpHeaders = new HttpHeaders();
     return authHeader.set(
       'Authorization',
-      'Bearer ' +SessionService.getToken()
+      'Bearer ' + SessionService.getToken()
     )
   }
 

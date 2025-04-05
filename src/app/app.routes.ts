@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { CustomerComponent } from './pages/customer/customer.component';
 import { DashboardComponent } from './pages/admin/pages/dashboard/dashboard.component';
+import { UpdateRoomsComponent } from './pages/admin/pages/update-rooms/update-rooms.component';
 
 
 export const routes: Routes = [
@@ -15,6 +16,7 @@ export const routes: Routes = [
   { path: 'admin', loadChildren: () => import('./pages/admin/admin.routes').then(m => m.ADMIN_ROUTES) },
   { path: 'customer', component: CustomerComponent },
   { path: 'dashborad', component: DashboardComponent },
+  { path: 'rooms/:id/edit', component: UpdateRoomsComponent },
 
 
 ];

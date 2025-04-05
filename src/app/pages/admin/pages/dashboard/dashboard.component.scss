@@ -1,48 +1,55 @@
-/* 容器設計，讓內容置中且間距適中 */
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+  padding: 40px 5%;
   background-color: #f4f6f9;
   min-height: 75vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
-.btn{
-  width: 20%;
-  height: 10%;
-  margin-left: 90%;
+
+.top-bar {
+  align-self: flex-start;
+  margin-bottom: 20px;
+}
+
+.btn {
+  height: 5%;
+  padding: 10px 24px;
   font-size: 16px;
   font-weight: bold;
-  border-radius: 6px;
+  border-radius: 8px;
   transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
 }
 
 nz-card {
-  width: 300px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  background: #fff;
-  margin: 15px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 nz-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 nz-card-meta {
   text-align: left;
 }
 
-.container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  justify-content: center;
-}
-
 .pagination {
-  margin-top: 20px;
+  margin-top: 30px;
   text-align: center;
 }

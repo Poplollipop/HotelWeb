@@ -1,22 +1,29 @@
 <div class="container">
-  <button class="btn" nz-button nzType="primary" routerLink="/admin/post-rooms">新增房間</button>
-  @for (room of rooms; track $index) {
-  <nz-card style="width:300px;" [nzActions]="[actionEdit,actionDelete]">
-    <nz-skeleton [nzActive]="true" [nzLoading]="false" [nzAvatar]="{size:'large'}">
-      <nz-card-meta [nzAvatar]="avatarTemplate" nzTitle="{{room.name}}" nzDescription="類型：{{room.type}}">
+  <!-- 按鈕置於左上角 -->
+  <div class="top-bar">
+    <button class="btn" nz-button nzType="primary" routerLink="/admin/post-rooms">新增房間</button>
+  </div>
 
-      </nz-card-meta>
-      <nz-card-meta nzDescription="價格：{{room.price}}"></nz-card-meta>
-    </nz-skeleton>
-  </nz-card>
-  }
-  <ng-template #actionEdit>
-    <button nz-button nzType="link">編輯</button>
-  </ng-template>
 
-  <ng-template #actionDelete>
-    <button nz-button nzType="link" nzDanger>刪除</button>
-  </ng-template>
+  <div class="card-grid">
+    @for (room of rooms; track $index) {
+    <nz-card [nzActions]="[actionEdit,actionDelete]">
+      <nz-skeleton [nzActive]="true" [nzLoading]="false" [nzAvatar]="{size:'large'}">
+        <nz-card-meta [nzAvatar]="avatarTemplate" nzTitle="{{room.name}}" nzDescription="類型：{{room.type}}">
+        </nz-card-meta>
+        <nz-card-meta nzDescription="價格：{{room.price}}"></nz-card-meta>
+      </nz-skeleton>
+    </nz-card>
+
+    <ng-template #actionEdit>
+      <button nz-button nzType="link" routerLink="/admin/rooms/{{room.id}}/edit">編輯</button>
+    </ng-template>
+
+    <ng-template #actionDelete>
+      <button nz-button nzType="link" nzDanger>刪除</button>
+    </ng-template>
+    }
+  </div>
 
   <div class="pagination">
     <nz-pagination [nzPageIndex]="current_page" [nzTotal]="total" [nzPageSize]="1"

@@ -7,6 +7,9 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+
 @Component({
   selector: 'app-dashboard',
   imports: [
@@ -15,6 +18,8 @@ import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
     NzSkeletonModule,
     NzPaginationModule,
     NzModalModule,
+    NzToolTipModule,
+    NzIconModule,
     RouterLink,
   ],
   templateUrl: './dashboard.component.html',
@@ -39,7 +44,6 @@ export class DashboardComponent {
 
   getRooms() {
     this.adminService.getRoom(this.current_page - 1).subscribe(res => {
-      console.log(res);
       this.rooms = res.roomsDtoList;
       this.total = res.pages * 1;
     })

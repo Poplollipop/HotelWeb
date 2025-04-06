@@ -1,5 +1,4 @@
 <div class="container">
-  <!-- 按鈕置於左上角 -->
   <div class="top-bar">
     <button class="btn" nz-button nzType="primary" routerLink="/admin/post-rooms">新增房間</button>
   </div>
@@ -16,11 +15,11 @@
     </nz-card>
 
     <ng-template #actionEdit>
-      <button nz-button nzType="link" routerLink="/admin/rooms/{{room.id}}/edit">編輯</button>
+      <span nzTooltipTitle="編輯" nzTooltipPlacement="bottom" nz-tooltip nz-icon nzType="edit" nzTheme="outline" routerLink="/admin/rooms/{{room.id}}/edit"></span>
     </ng-template>
 
     <ng-template #actionDelete>
-      <button nz-button nzType="link" nzDanger (click)="showConfirmed(room.id)">刪除</button>
+      <span nzTooltipTitle="刪除" nzTooltipPlacement="bottom" nz-tooltip nz-icon nzType="delete" nzTheme="outline" nzDanger (click)="showConfirmed(room.id)"></span>
     </ng-template>
     }
   </div>

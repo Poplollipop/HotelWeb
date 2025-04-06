@@ -1,1 +1,32 @@
-<p>rooms works!</p>
+<div class="container">
+
+  <div class="card-grid">
+    @for (room of rooms; track $index) {
+    <nz-card [nzActions]="[actionCheck]">
+      <nz-skeleton [nzActive]="true" [nzLoading]="false" [nzAvatar]="{size:'large'}">
+        <nz-card-meta [nzAvatar]="avatarTemplate" nzTitle="{{room.name}}" nzDescription="類型：{{room.type}}">
+        </nz-card-meta>
+        <nz-card-meta nzDescription="價格：{{room.price}}"></nz-card-meta>
+      </nz-skeleton>
+    </nz-card>
+    <ng-template #actionCheck>
+      <span nzTooltipTitle="預約" nzTooltipPlacement="bottom" nz-tooltip nz-icon nzType="check-circle" nzTheme="outline"
+        (click)="showModal(room.id)"></span>
+    </ng-template>
+    }
+  </div>
+
+  <div class="pagination">
+    <nz-pagination [nzPageIndex]="current_page" [nzTotal]="total" [nzPageSize]="1"
+      (nzPageIndexChange)="pageIndexChange($event)"></nz-pagination>
+  </div>
+</div>
+
+<nz-modal nzTitle="預訂房間" nzCentered [(nzVisible)]="isVisiable" (nzOnCancel)="cancelMiddle()" (nzOnOk)="okMiddle()">
+  <ng-container *nzModalContent>
+    <div>
+      <nz-range-picker [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-range-picker>
+    </div>
+  </ng-container>
+
+</nz-modal>

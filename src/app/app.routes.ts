@@ -15,6 +15,7 @@ export const routes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'admin', loadChildren: () => import('./pages/admin/admin.routes').then(m => m.ADMIN_ROUTES) },
   { path: 'customer', component: CustomerComponent },
+  { path: 'customer', loadChildren: () => import('./pages/customer/customer.routes').then(m => m.CUSTMOER_ROUTES) },
   { path: 'dashborad', component: DashboardComponent },
   { path: 'rooms/:id/edit', component: UpdateRoomsComponent },
 

@@ -1,4 +1,4 @@
-# Hotel Booking Management System - Backend (Java Spring Boot)
+# Hotel Booking Management System - Frontend (Angular)
 
 ## 專案簡介
 一個基於 Spring Boot 和 MySQL 的飯店房間管理系統，提供房間管理、訂房系統管理等功能。

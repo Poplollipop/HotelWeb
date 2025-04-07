@@ -9,7 +9,7 @@
         <th>退房日期</th>
         <th>房間價格</th>
         <th>訂房客戶</th>
-        <th>房間狀態</th>
+        <th>目前狀態</th>
         <th>動作</th>
       </tr>
     </thead>
@@ -49,13 +49,17 @@
           }
         </td>
         <td>
-          @if (reservation.roomsStatus == 'PENDING'){
-          <span nz-icon nzType="check-square" nzTheme="twotone" [nzTwotoneColor]="'#52c41a'"
-            (click)="changeStatus(reservation.id,'Approve')"></span>
-          <span nz-icon nzType="close-square" nzTheme="twotone" [nzTwotoneColor]="'#FF0000'"
-            (click)="changeStatus(reservation.id,'Rejet')"></span>
-
+          @if (reservation.roomsStatus == 'PENDING') {
+          <div class="action-icons">
+            <span nz-icon nzType="check-square" nzTheme="twotone" [nzTwotoneColor]="'#52c41a'"
+              (click)="changeStatus(reservation.id,'Approve')">
+            </span>
+            <span nz-icon nzType="close-square" nzTheme="twotone" [nzTwotoneColor]="'#FF0000'"
+              (click)="changeStatus(reservation.id,'Reject')">
+            </span>
+          </div>
           }
+
         </td>
       </tr>
       }

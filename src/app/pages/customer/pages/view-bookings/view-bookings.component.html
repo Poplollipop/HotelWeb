@@ -1,0 +1,57 @@
+<div class="data-form">
+  <h2 class="title">預約</h2>
+  <nz-table [nzShowPagination]="'false'" [nzData]="bookings">
+    <thead>
+      <tr>
+        <th>房間名稱</th>
+        <th>房間類型</th>
+        <th>入住日期</th>
+        <th>退房日期</th>
+        <th>房間價格</th>
+        <th>目前狀態</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (booking of bookings; track $index) {
+      <tr>
+        <td>{{ booking.roomName }}</td>
+        <td>{{ booking.roomType }}</td>
+        <td>{{ booking.checkInDate }}</td>
+        <td>{{ booking.checkOutDate }}</td>
+        <td>{{ booking.price }}</td>
+        <td>
+          @if (booking.roomsStatus == 'PENDING') {
+          <ng-container>
+            <nz-tag nzColor="processing">
+              <span nz-icon nzType="sync" nzSpin></span>
+              <span>申請中</span>
+            </nz-tag>
+          </ng-container>
+          }
+          @if (booking.roomsStatus == 'APPROVED') {
+          <ng-container>
+            <nz-tag nzColor="success">
+              <span nz-icon nzType="file-done"></span>
+              <span>已接受</span>
+            </nz-tag>
+          </ng-container>
+          }
+          @if (booking.roomsStatus == 'REJECTED') {
+          <ng-container>
+            <nz-tag nzColor="error">
+              <span nz-icon nzType="close-square"></span>
+              <span>已拒絕</span>
+            </nz-tag>
+          </ng-container>
+          }
+        </td>
+
+      </tr>
+      }
+    </tbody>
+  </nz-table>
+  <div class="pagination">
+    <nz-pagination (nzPageIndexChange)="pageIndexChange($event)" [nzTotal]="total" [nzPageSize]="5"
+      [nzPageIndex]="current_page"></nz-pagination>
+  </div>
+</div>

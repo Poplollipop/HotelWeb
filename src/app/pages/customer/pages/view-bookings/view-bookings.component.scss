@@ -57,26 +57,3 @@
     }
   }
 }
-
-
-.action-icons {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
-
-.action-icons span {
-  font-size: 24px;
-  cursor: pointer;
-  border-radius: 6px;
-  padding: 6px;
-  transition: all 0.2s ease;
-}
-
-.action-icons span:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-  transform: scale(1.15);
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
-}
-
-

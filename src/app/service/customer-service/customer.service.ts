@@ -24,6 +24,13 @@ export class CustomerService {
     })
   }
 
+  getBookings(pagesNumber: number): Observable<any> {
+    const userId = SessionService.getUserId();
+    return this.http.get(URL + `customer/bookings/${userId}/${pagesNumber}`, {
+      headers: this.createAuth(),
+    })
+  }
+
   createAuth() {
     let authHeader: HttpHeaders = new HttpHeaders();
     return authHeader.set(
